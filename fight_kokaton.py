@@ -92,19 +92,19 @@ class Bomb:
     """
     爆弾に関するクラス
     """
-    _colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (255, 0, 255), (0, 255, 255)]
+    _colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (255, 0, 255), (0, 255, 255)]#色リスト
     _dires = [-1, 0, +1]
     def __init__(self):
         """
         爆弾円Surfaceを生成する
         """
-        rad = random.randint(10, 50)
-        color = random.choice(Bomb._colors)
+        rad = random.randint(10, 50)#爆弾の大きさ
+        color = random.choice(Bomb._colors)#色をランダムにする
         self._img = pg.Surface((2*rad, 2*rad))
-        pg.draw.circle(self._img, color, (rad, rad), rad)
-        self._img.set_colorkey((0, 0, 0))
+        pg.draw.circle(self._img, color, (rad, rad), rad)#赤い球を作る
+        self._img.set_colorkey((0, 0, 0)) #背景を消す
         self._rct = self._img.get_rect()
-        self._rct.center = random.randint(0, WIDTH), random.randint(0, HEIGHT)
+        self._rct.center = random.randint(0, WIDTH), random.randint(0, HEIGHT)#球の位置
         self._vx, self._vy = random.choice(Bomb._dires), random.choice(Bomb._dires)
 
     def update(self, screen: pg.Surface):
